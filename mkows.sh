@@ -8,14 +8,14 @@
 # PROTIP: export PIP_DOWNLOAD_CACHE=~/.pip/cache
 #
 
-[ -z $DEST ]           && DEST='.'
+[ -z $DEST ]           && DEST='/opt'
 [ -z $PROJ ]           && PROJ='ows'
 [ -z $DB ]             && DB=$PROJ
 [ -z $DOMAIN ]         && DOMAIN='occupycincy.org'
 [ -z $RECAPTCHA_PUB ]  && RECAPTCHA_PUB='6Lf32MkSAAAAAMKMBKBqwtjdh2TeYUwVthzgPLRC'
 [ -z $RECAPTCHA_PRIV ] && RECAPTCHA_PRIV='6Lf32MkSAAAAAJPNhPJ7moPueeJSfvjfecyG6x1u'
 [ -z $REPO ]           && REPO=$(git remote -v 2>/dev/null | grep ^origin | awk '{print $2}' | grep /occupywallst\.git$ | head -n 1)
-[ -z $REPO ]           && REPO='git://github.com/jart/occupywallst.git'
+[ -z $REPO ]           && REPO='git://github.com/raininja/occupywallst.git'
 
 function pg_db_exists {
     psql -Al | grep ^$1\| >/dev/null
@@ -55,6 +55,7 @@ easy_install ez_setup	      || exit 1
 easy_install psycopg2	      || exit 1
 easy_install pip              || exit 1
 easy_install django-imagekit  || exit 1
+easy_install PIL              || exit 1
 git clone $REPO occupywallst  || exit 1
 pip install -e occupywallst   || exit 1
 cd occupywallst               || exit 1
