@@ -11,7 +11,7 @@
 [ -z $DEST ]           && DEST='.'
 [ -z $PROJ ]           && PROJ='ows'
 [ -z $DB ]             && DB=$PROJ
-[ -z $DOMAIN ]         && DOMAIN='occupywallst.dev'
+[ -z $DOMAIN ]         && DOMAIN='occupycincy.org'
 [ -z $RECAPTCHA_PUB ]  && RECAPTCHA_PUB='6Lf32MkSAAAAAMKMBKBqwtjdh2TeYUwVthzgPLRC'
 [ -z $RECAPTCHA_PRIV ] && RECAPTCHA_PRIV='6Lf32MkSAAAAAJPNhPJ7moPueeJSfvjfecyG6x1u'
 [ -z $REPO ]           && REPO=$(git remote -v 2>/dev/null | grep ^origin | awk '{print $2}' | grep /occupywallst\.git$ | head -n 1)
@@ -51,7 +51,10 @@ cd $DEST                      || exit 1
 virtualenv $PROJ              || exit 1
 cd $PROJ                      || exit 1
 source bin/activate           || exit 1
+easy_install ez_setup	      || exit 1
+easy_install psycopg2	      || exit 1
 easy_install pip              || exit 1
+easy_install django-imagekit  || exit 1
 git clone $REPO occupywallst  || exit 1
 pip install -e occupywallst   || exit 1
 cd occupywallst               || exit 1
