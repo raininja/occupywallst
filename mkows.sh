@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# OccupyWallSt Setup Script
-#
+# OccupyWallSt Setup Script, modified for OccupyCincy by raininja May 2012
+# added upgrades to Django for postgresql 9.x postGIS adaptor issue
+# needed PIL, psycog2, and django-imagekit to clean the build 
 # This script makes it painless to deploy the website into happy
 # little self-contained virtualenvs.
 #
